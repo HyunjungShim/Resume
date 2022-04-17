@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/dd7821b921.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.6.0.min.js">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./resume.css">
+    <link rel="stylesheet" href="reset.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <h4>Hyunjung's Portfolio</h4>
+        </div>
+    </div>
+    <div class="intro">
+        <h1 class="first">DEVELOPER</h1>
+       <div class="text">
+            <p>WEB</p><p>FRONTEND</p>
+            <p>DESIGNER</p><p>HyunJung</p>
+       </div>
+        <h1 class="second">INSIGHT</h1>
+    </div>
+    <div class="intro2">
+        <h1>About Me</h1>
+        <div class="aboutme">
+            <div class="name aboutme-content">
+                <i class="fa-solid fa-user fa-5x icon"></i>
+                <p>NAME:심현정</p>
+                <i class="fa-solid fa-phone fa-5x icon"></i>
+                <p>Number<br>010-6410-1540<br>p42510@gmail.com</p>
+            </div>
+            <div class="birth aboutme-content">
+                <i class="fa-solid fa-calendar fa-5x icon"></i>
+                <p>Birth:00.09.17</p>
+                <i class="fa-solid fa-location-dot fa-5x icon"></i>
+                <p>Location:서울특별시 송파구</p>
+            </div>
+        </div>
+    </div>
+    <div class="intro3">
+        <h1>Portfolio</h1>
+        <div class="portfolio1 portfolio">
+            <div><img src="./img/portfolio1.png" alt=""></div>
+            <div class="portfolio-text">
+                <h3>Digital Museum</h3>
+                <p>코로나 시대에 집에서도 편하게 작품을 감상할수있도록 프로젝트 제작</p>
+                <p>React,JS,CSS,HTML 사용</p>
+            </div>
+        </div>
+        <div class="portfolio2  portfolio">
+            <img src="./img/portfolio2.png" alt="">
+            <div class="portfolio-text">
+                <h3>Cinema Paradiso</h3>
+                <p>JS 스크롤이벤트 활용한 메인페이지와 Open API를 통한 영화검색사이트</p>
+                <p>React,JS,CSS,HTML 사용</p>
+            </div>
+        </div>
+        <div class="portfolio3  portfolio">
+            <img src="./img/portfolio3.png" alt="">
+            <div class="portfolio-text">
+                <h3>Resume</h3>
+                <p>JS애니메이션과 색감을 통한 생동감을 구현한 사이트</p>
+                <p>React,JS,CSS,HTML 사용</p>
+            </div>
+        </div>
+    </div>
+    <div class="content1 container">
+        <p>폰트에 색감을 더하다</p>
+    </div>
+    <div class="text_box container"></div>
+    <div class="text_box2 container"></div>
+    
+    <div class="content2">
+        <div class="content2-text container">
+            <h1>직접 기획하고 <br>디자인한 인터렉션</h1>
+            <p> 디자인과 GRADATION을 이용한 인터렉션 제작</p>
+            <p>그라데이션을 이용한 마법같은 COLOR전이</p>
+        </div >
+        <div class="circle container"></div>
+    </div>
+    <div class="content3">
+        <div class="content3-text">
+            <p>이미지를 더 생동감있게!</p>
+            <section class="sec_wave">
+                <div class="wave_box"></div>
+            </section>
+        </div>
+        <section>
+            <figure>
+            <img src="./img/content3.webp" alt="">
+            <div class="overlay"></div>
+          </figure>
+        </section>
+    </div>
+
+    <script>
+        function TextSplit(elName, txt){
+            let parentElement = document.querySelector(`.${elName}`);
+            let setText = txt.split("");
+
+            setText.forEach((txt, i) =>{
+                let span = document.createElement('span');
+
+                if(txt.match(/\s/g)) {
+                    span.innerHTML = '&nbsp';
+                }else {
+                    span.innerText = txt;
+                }
+                parentElement.appendChild(span);
+            });
+
+            const children = parentElement.children;
+            let index = 0;
+            let speed = 0.35;
+            
+            for ( let item of children) {
+                item.style.transitionDelay = index * speed + 's';
+                index++;
+            }
+        }
+        TextSplit('text_box', '폰트에 그라데이션');
+        TextSplit('text_box2', '효과를 더하다');
+        setTimeout(function(){
+            document.querySelector('.text_box')
+            .classList
+            .add('active')
+        },13000);
+        setTimeout(function(){
+            document.querySelector('.text_box2')
+            .classList
+            .add('active')
+        },16500);
+   
+        $(window).on('scroll', function(){
+            console.log($(window).scrollTop())
+        })
+        var height = $(window).scrollTop()
+
+        if ( height > 970){
+            $('.header').fadeIn()
+        }else{
+            $('.header').hide()
+        }
+      
+        $('.first').animate( {opacity: "1"},2000)
+        $('.second').animate( {opacity: "1"},2000)
+        $('.text').animate( {opacity: "1"},2000)
+    </script>
+    <script src="./soundeffect.js"></script>
+    <script src=""></script>
+</body>
+</html>
